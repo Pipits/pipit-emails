@@ -1,0 +1,15 @@
+<perch:email id="title" type="text" label="Title" required suppress />
+<perch:email id="event" type="text" label="Event" suppress required />
+<perch:email id="enabled" type="checkbox" label="Enabled" value="1" suppress />
+
+<perch:email id="from_event" type="checkbox" label="Get recepients from event" value="1" suppress divider-before="Recepients" />
+<perch:email id="recipients" type="tags" label="Recepients" suppress placeholder="Add email address.." help="Separate by comma" />
+
+<perch:email id="sender_name" type="text" label="Sender name" required suppress divider-before="Sender" />
+<perch:email id="sender_email" type="email" label="Sender email" required suppress />
+
+
+<perch:email id="template" type="pipit_email_template" label="Template" default="default.html" suppress divider-before="Email" />
+<perch:email id="subject" type="text" label="Subject line" required suppress />
+
+
