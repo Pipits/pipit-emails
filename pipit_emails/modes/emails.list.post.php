@@ -38,6 +38,17 @@
             'sort' => 'title'
         ]);
 
+        $AdminListing->add_col([
+            'title'     => 'Enabled',
+            'value'     => function($email) {
+                if($email->enabled() == 1) {
+                    return PerchUI::icon('core/circle-check', 16, null, 'icon-status-success');
+                } else {
+                    return PerchUI::icon('core/cancel', 16, null, 'icon-status-alert');
+                }
+            },
+        ]);
+
         $AdminListing->add_delete_action([
             'priv'   => 'pipit_emails.email.delete',
             'inline' => true,
