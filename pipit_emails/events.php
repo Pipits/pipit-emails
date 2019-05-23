@@ -7,7 +7,7 @@
     if ($Settings->get('pipit_emails_update')->val()) {
         if(!strpos($_SERVER['REQUEST_URI'], 'pipit_emails') !== false) {
             $Emails = new PipitEmails_Emails($API);
-            $emails = $Emails->all();
+            $emails = $Emails->get_by('enabled', 1);
             
             $API_Email = $API->get('Email');
             $event_handlers = include(PerchUtil::file_path(PERCH_PATH . '/config/pipit_emails_event_handlers.php'));
