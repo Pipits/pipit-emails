@@ -23,15 +23,20 @@
                         'title' => $Email->title(),
                         'link'  => $API->app_nav() . '/edit/?id=' .$Email->id(),
                         'translate' => false,
-                    ]
+                    ],
+                    [
+                        'title' => 'Preview',
+                        'link'  => $API->app_nav() . '/edit/?id=' .$Email->id(),
+                    ],
                 ],
             ]);
 
+
             $Smartbar->add_item([
                 'active'        => false,
-                'link'  => $API->app_nav() . '/preview/?id=' .$Email->id(),
-                'title'         => 'Preview',
-                'icon'          => 'core/document',
+                'link'          => $API->app_nav() . '/edit/?id=' .$Email->id(),
+                'title'         => 'Edit',
+                'icon'          => 'core/pencil',
                 'position'      => 'end',
             ]);
 
@@ -39,10 +44,6 @@
     }
 
 
-
-    echo $HTML->heading2('Email');
-
-    echo $EditForm->form_start();
-        echo $EditForm->fields_from_template($Template, $details);
-        echo $EditForm->submit_field('btnSubmit', 'Save', $API->app_path());
-    echo $EditForm->form_end();
+    // render Email in iframe
+    $iframe_src = $API->app_path() . '/render/?id=' . $Email->id();
+    echo '<iframe src="'. $iframe_src .'" style="width:97%; height:80vh; margin-left:24px; border:1px solid #e9eaea"></iframe>';
