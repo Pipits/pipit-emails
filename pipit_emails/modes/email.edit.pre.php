@@ -59,6 +59,10 @@
 
         $data = array_merge($data, $static_fields);
 
+        if(!isset($data['enabled'])) {
+            $data['enabled'] = 0;
+        }
+
 
         if (is_object($Email)) {        
             
