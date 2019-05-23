@@ -16,6 +16,7 @@ The Emails app enables you to create editable emails via the Perch control panel
 
 * Perch or Perch Runway 3.0 or higher
 * PHP 7+
+* [Tags](https://github.com/Pipits/tags-fieldtype) field type
 
 
 
