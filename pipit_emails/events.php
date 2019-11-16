@@ -51,9 +51,22 @@
 
                             // Get dynamic event data for templating
                             $event_data = [];
-                            if($Event->subject && is_array($Event->subject)) {
-                                foreach($Event->subject as $key => $value) {
-                                    $event_data['event_' . $key] = $value;
+                            if($Event->subject) {
+                                switch(gettype($Event->subject)) {
+                                    case 'array':
+                                        foreach($Event->subject as $key => $value) {
+                                            $event_data['event_' . $key] = $value;
+                                        }
+                                        break;
+
+                                    case 'object':
+                                        // PerchBase objects has to_array() function
+                                        if(method_exists($Event->subject, 'to_array')) {
+                                            foreach($Event->subject->to_array() as $key => $value) {
+                                                $event_data['event_' . $key] = $value;
+                                            }
+                                        }
+                                        break;
                                 }
                             }
                             // PerchUtil::debug($event_data);
